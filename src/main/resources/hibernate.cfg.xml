@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
+
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres?serverTimezone=UTC</property>
+
+        <property name="connection.username">ilovehardrock</property>
+
+        <property name="connection.password">466128</property>
+
+        <property name="connection.pool_size">2</property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <property name="show_sql">true</property>
+
+        <mapping class ="hibernateClasses.CourseUSD"/>
+        <mapping class ="hibernateClasses.CourseEUR"/>
+        <mapping class ="hibernateClasses.CourseRUB"/>
+        <mapping class ="hibernateClasses.CourseCLP"/>
+
+    </session-factory>
+</hibernate-configuration>
