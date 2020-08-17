@@ -108,7 +108,7 @@ public class App extends Application {
         reportVBox.setAlignment(Pos.CENTER);
         reportVBox.setPadding(new Insets(10));
         reportVBox.setSpacing(10);
-        Scene reportScene = new Scene(reportVBox, 300, 250);
+        Scene reportScene = new Scene(reportVBox, 350, 250);
         back.setOnAction(x1 -> {
             mainStage.setScene(mainScene);
         });
@@ -125,7 +125,7 @@ public class App extends Application {
         reportVBox.setAlignment(Pos.CENTER);
         reportVBox.setPadding(new Insets(10));
         reportVBox.setSpacing(10);
-        Scene reportScene = new Scene(reportVBox, 300, 600);
+        Scene reportScene = new Scene(reportVBox, 350, 600);
         back.setOnAction(x1 -> {
             mainStage.setScene(mainScene);
         });

@@ -8,8 +8,8 @@ public class CourseRUB extends Course {
 
     public CourseRUB(){}
 
-    public CourseRUB(double course, double scale, Calendar courseDate, Calendar updateDateStamp) {
-        super(course, scale, courseDate,updateDateStamp);
+    public CourseRUB(double course, double dynamic, double scale, Calendar courseDate, Calendar updateDateStamp) {
+        super(course, dynamic, scale, courseDate, updateDateStamp);
     }
 
 }

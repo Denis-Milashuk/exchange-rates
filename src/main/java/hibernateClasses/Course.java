@@ -14,6 +14,9 @@ public class Course implements Comparable {
     @Column(nullable = false)
     private double course;
 
+    @Column
+    private double dynamic;
+
     @Column(nullable = false)
     private double scale;
 
@@ -29,8 +32,9 @@ public class Course implements Comparable {
 
     Course(){}
 
-    Course(double course,double scale, Calendar courseDate, Calendar updateDateStamp){
+    public Course(double course, double dynamic, double scale, Calendar courseDate, Calendar updateDateStamp) {
         this.course = course;
+        this.dynamic = dynamic;
         this.scale = scale;
         this.courseDate = courseDate;
         this.updateDateStamp = updateDateStamp;
@@ -50,6 +54,14 @@ public class Course implements Comparable {
 
     public void setCourse(double course) {
         this.course = course;
+    }
+
+    public double getDynamic() {
+        return dynamic;
+    }
+
+    public void setDynamic(double dynamic) {
+        this.dynamic = dynamic;
     }
 
     public double getScale() {

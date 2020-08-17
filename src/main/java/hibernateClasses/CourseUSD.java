@@ -8,8 +8,8 @@ public class CourseUSD extends Course {
 
     public CourseUSD(){}
 
-    public CourseUSD(double course,double scale, Calendar courseDate, Calendar updateDateStamp) {
-        super(course, scale, courseDate, updateDateStamp);
+    public CourseUSD(double course, double dynamic, double scale, Calendar courseDate, Calendar updateDateStamp) {
+        super(course, dynamic, scale, courseDate, updateDateStamp);
     }
 
 }

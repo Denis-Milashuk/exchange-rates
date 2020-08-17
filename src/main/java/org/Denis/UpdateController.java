@@ -8,6 +8,8 @@ import urlConnectionClasses.Rate;
 import urlConnectionClasses.UrlUpdater;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -33,10 +35,10 @@ public class UpdateController {
     private void updateByCurrency(Currency currency) throws IOException {
         HibernateHelper hibernateHelper = HibernateHelper.getInstance();
         Calendar currentDateWithoutTime = getCurrentDateWithoutTime();
-        Calendar lastCourseDate = hibernateHelper.getLastCourseDateOrIfEmptyReturnThirtyDayAgoDate(currency);
-        while (lastCourseDate.before(currentDateWithoutTime)){
-            lastCourseDate.add(Calendar.DAY_OF_MONTH, 1);
-            hibernateHelper.addCourse(getCourseByDate(lastCourseDate,currency));
+        Calendar courseDate = hibernateHelper.getLastCourseDateOrIfEmptyReturnThirtyDayAgoDate(currency);
+        while (courseDate.before(currentDateWithoutTime)){
+            courseDate.add(Calendar.DAY_OF_MONTH, 1);
+            hibernateHelper.addCourse(getCourseByDate(courseDate,currency));
         }
     }
 
@@ -51,6 +53,13 @@ public class UpdateController {
         courseDate.setTime(rate.Date);
         Course course =  CourseFactory.getCourseByCurrency(currency);
         course.setCourse(rate.Cur_OfficialRate);
+        double dynamic = 0.00;
+        double lastCourse = HibernateHelper.getInstance().getDynamicOfCoursesForCurrency(currency);
+        if(lastCourse !=0) {
+            dynamic = course.getCourse() - lastCourse;
+        }
+        BigDecimal roundingBigDecimal = new BigDecimal(dynamic).setScale(3,RoundingMode.HALF_UP);
+        course.setDynamic(roundingBigDecimal.doubleValue());
         course.setScale(rate.Cur_Scale);
         course.setCourseDate(courseDate);
         course.setUpdateDateStamp(new GregorianCalendar());

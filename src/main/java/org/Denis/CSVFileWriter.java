@@ -22,10 +22,10 @@ public class CSVFileWriter {
     public void WriteReportInCSVFileByCurrency(String report, Currency currency){
         String DateAndTimeCreatingFile  = new SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss").format(new GregorianCalendar().getTime());
         String fileName = currency + "report:" + DateAndTimeCreatingFile + ".csv";
-        String [] ArrayReport = isReadyingTheReportForWritingInCSVFile(report);
+        String [] arrayReport = isReadyingTheReportForWritingInCSVFile(report);
         try(CSVWriter csvWriter = new CSVWriter(new FileWriter(fileName))) {
-            csvWriter.writeNext(new String[]{"Course Date","Scale","Course"});
-            for (String row : ArrayReport) {
+            csvWriter.writeNext(new String[]{"Course Date","Scale","Course and dynamic"});
+            for (String row : arrayReport) {
                 csvWriter.writeNext(row.split(":"));
             }
         } catch (IOException ioException) {

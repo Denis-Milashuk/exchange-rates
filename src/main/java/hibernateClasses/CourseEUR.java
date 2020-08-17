@@ -8,8 +8,8 @@ public class CourseEUR extends Course {
 
     public CourseEUR () {}
 
-    public CourseEUR(double course, double scale, Calendar courseDate, Calendar updateDateStamp) {
-        super(course, scale, courseDate, updateDateStamp);
+    public CourseEUR(double course, double dynamic, double scale, Calendar courseDate, Calendar updateDateStamp) {
+        super(course, dynamic, scale, courseDate, updateDateStamp);
     }
 
 }
