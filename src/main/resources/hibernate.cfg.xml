@@ -11,7 +11,7 @@
 
         <property name="connection.username">sa</property>
 
-        <property name="connection.pool_size">1</property>
+        <property name="connection.pool_size">100</property>
 
         <property name="hibernate.hbm2ddl.auto">update</property>
 

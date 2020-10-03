@@ -30,7 +30,7 @@ public class UpdateController {
             updateByCurrency(temp);
         }
         //Arrays.stream(Currency.values()).forEach(this::updateByCurrency);
-    }
+     }
 
     private void updateByCurrency(Currency currency) throws IOException {
         HibernateHelper hibernateHelper = HibernateHelper.getInstance();
@@ -48,7 +48,7 @@ public class UpdateController {
         return fromRateToCourseByCurrency(rate, currency);
     }
 
-    private Course fromRateToCourseByCurrency(Rate rate, Currency currency){
+    private Course fromRateToCourseByCurrency(Rate rate, Currency currency) {
         Calendar courseDate = new GregorianCalendar();
         courseDate.setTime(rate.Date);
         Course course =  CourseFactory.getCourseByCurrency(currency);

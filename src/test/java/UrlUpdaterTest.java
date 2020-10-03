@@ -5,23 +5,24 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import urlConnectionClasses.UrlUpdater;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class UrlUpdaterTest {
 
     @Timeout(2000)
-    @RepeatedTest(50)
-    public void getDataByDateAndCurrencyShouldNotOverdueTimeOut() throws InterruptedException {
-        new UrlUpdater().getDataByDateAndCurrency(new GregorianCalendar(2020, Calendar.MAY,22), Currency.USD);
+    @RepeatedTest(20)
+    public void getDataByDateAndCurrencyShouldNotOverdueTimeOut() throws InterruptedException, IOException {
+        UrlUpdater.getInstance().getDataByDateAndCurrency(new GregorianCalendar(2020, Calendar.MAY,22), Currency.USD);
         Thread.sleep(100);
     }
 
-    @RepeatedTest(50)
+    @RepeatedTest(20)
     public void getDataByDateAndCurrencyShouldNotThrowException() throws InterruptedException {
         Assertions.assertDoesNotThrow(() ->
         {
-            new UrlUpdater().getDataByDateAndCurrency(new GregorianCalendar(2020, Calendar.MAY,22), Currency.USD);
+            UrlUpdater.getInstance().getDataByDateAndCurrency(new GregorianCalendar(2020, Calendar.MAY,22), Currency.USD);
         }
         );
         Thread.sleep(100);

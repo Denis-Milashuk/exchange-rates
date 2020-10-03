@@ -16,6 +16,7 @@ public enum Currency {
     CLP;
 
     public static ObservableList<Currency> getObservableList(){
-        return Arrays.stream(Currency.values()).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        return Arrays.stream(Currency.values())
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 }
